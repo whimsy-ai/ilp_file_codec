@@ -220,8 +220,8 @@ class _ILPFile extends _ILPDataSource {
   }
 
   Future<RandomAccessFile> _getHeader() async {
+    final raf = await file.open();
     try {
-      final raf = await file.open();
       if (_header == null) {
         await raf.setPosition(ilpFileFixedStringsLength);
         final headerLength =
@@ -236,6 +236,7 @@ class _ILPFile extends _ILPDataSource {
       }
       return raf;
     } catch (e) {
+      await raf.close();
       throw ILPConfigException(
         message: 'ilp_file_parse_error',
         file: file.path,
@@ -428,7 +429,12 @@ class ILP {
   factory ILP.fromConfigFiles(List<String> path) {
     final files = path.map((e) => File(e)).toList();
     for (var file in files) {
-      assert(file.existsSync());
+      if (!file.existsSync()) {
+        throw ILPConfigException(
+          message: 'ilp_file_not_exists',
+          file: file.path,
+        );
+      }
     }
     return ILP._(_ILPConfig(files));
   }
