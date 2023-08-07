@@ -352,6 +352,7 @@ class _ILPConfig extends _ILPDataSource {
     assert(infos.length == layers.length);
     for (var i = 0; i < infos.length; i++) {
       final info = infos[i];
+      info.id = i.toString();
       final layer = layers[i];
       final infoBytes = _gzipEncoder.encode(info.writeToBuffer())!;
       final layerBytes = _gzipEncoder.encode(layer.writeToBuffer())!;

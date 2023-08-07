@@ -1,3 +1,7 @@
+## 1.0.15
+
+- Fixed ILPInfo\.id
+
 ## 1.0.14
 
 - Fixed an issue where the `ILP.fromFile` method would lock the file if parsed incorrectly.
