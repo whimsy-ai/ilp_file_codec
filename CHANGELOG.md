@@ -1,3 +1,7 @@
+## 1.0.16
+
+- ILP.toBytes add parameter: bool ignoreLayerName
+
 ## 1.0.15
 
 - Fixed ILPInfo\.id

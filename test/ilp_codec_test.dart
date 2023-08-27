@@ -68,9 +68,12 @@ void main() async {
     expect(header1.links.first, 'github');
     expect(header1.links.last, 'https://github.com');
 
-    ///
-    expect((await ilp1.layer(0)).content, backgroundContent);
-    expect((await ilp2.layer(0)).content, backgroundContent);
+    final layer1 = await ilp1.layer(0), layer2 = await ilp2.layer(0);
+
+    expect(layer1.content ,backgroundContent);
+    expect(layer1.content , backgroundContent);
+    expect(layer1.hasName(), false);
+    expect(layer2.hasName(), false);
   }
 
   /// note: ILPConfig is used internally

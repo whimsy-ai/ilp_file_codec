@@ -317,6 +317,7 @@ class _ILPConfig extends _ILPDataSource {
     required String author,
     required String name,
     required int version,
+    bool ignoreLayerName = true,
     String? description,
     List<String>? links,
     String? coverFilePath,
@@ -346,7 +347,10 @@ class _ILPConfig extends _ILPDataSource {
     if (layers == null) {
       layers = [];
       for (final config in _configs) {
-        layers.add(await config.layer.toLayer(true));
+        layers.add(await config.layer.toLayer(
+          true,
+          ignoreLayerName: ignoreLayerName,
+        ));
       }
     }
     assert(infos.length == layers.length);

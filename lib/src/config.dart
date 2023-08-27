@@ -211,9 +211,12 @@ class ILPLayerConfig {
   }
 
   /// Convert to ILPLayer
-  Future<ILPLayer> toLayer(bool isBackGroundLayer) async {
+  Future<ILPLayer> toLayer(
+    bool isBackGroundLayer, {
+    bool ignoreLayerName = true,
+  }) async {
     final layer = ILPLayer();
-    if (name != null) layer.name = name!;
+    if (!ignoreLayerName && name != null) layer.name = name!;
     if (hasFile) {
       final bytes = await File(file!).readAsBytes();
       layer.content = bytes;
@@ -226,7 +229,8 @@ class ILPLayerConfig {
       layer.y = y!;
       layer.content = await File(file!).readAsBytes();
       for (final l in layers!) {
-        layer.layers.add(await l.toLayer(false));
+        layer.layers
+            .add(await l.toLayer(false, ignoreLayerName: ignoreLayerName));
       }
     } else {
       if (layers == null) {
@@ -237,7 +241,8 @@ class ILPLayerConfig {
         layer.content = await File(file!).readAsBytes();
       } else {
         for (final l in layers!) {
-          layer.layers.add(await l.toLayer(false));
+          layer.layers
+              .add(await l.toLayer(false, ignoreLayerName: ignoreLayerName));
         }
       }
     }
