@@ -455,6 +455,7 @@ class ILP {
     List<String>? links,
     List<ILPInfo>? infos,
     List<ILPLayer>? layers,
+    bool ignoreLayerName = true,
   }) {
     assert(type == ILPType.configFiles);
     return (_source as _ILPConfig).toBytes(
@@ -466,6 +467,7 @@ class ILP {
       layers: layers,
       coverFilePath: coverFilePath,
       version: version,
+      ignoreLayerName: ignoreLayerName,
     );
   }
 }

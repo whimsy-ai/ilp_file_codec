@@ -1,3 +1,7 @@
+## 1.0.17
+
+- fixed issues.
+
 ## 1.0.16
 
 - ILP.toBytes add parameter: bool ignoreLayerName

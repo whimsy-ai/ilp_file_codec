@@ -70,8 +70,8 @@ void main() async {
 
     final layer1 = await ilp1.layer(0), layer2 = await ilp2.layer(0);
 
-    expect(layer1.content ,backgroundContent);
-    expect(layer1.content , backgroundContent);
+    expect(layer1.content, backgroundContent);
+    expect(layer1.content, backgroundContent);
     expect(layer1.hasName(), false);
     expect(layer2.hasName(), false);
   }
@@ -143,6 +143,18 @@ void main() async {
       expect(bytes.sublist(0, 4), ilpFileFixedStrings);
 
       await ilpFile.writeAsBytes(bytes);
+      /// test layer name
+      final testLayerName = ILP.fromBytes(await ilp.toBytes(
+        name: 'test',
+        author: 'gzlock',
+        description: 'hi',
+        links: ['github', 'https://github.com'],
+        infos: infos,
+        coverFilePath: ilpCover.path,
+        version: 2,
+        ignoreLayerName: false,
+      ));
+      expect((await testLayerName.layer(0)).name, 'background');
     });
     test('decoder test', () async {
       await ilpTester(bytes, ilpFile);
@@ -170,6 +182,20 @@ void main() async {
       expect(bytes.sublist(0, 4), ilpFileFixedStrings);
 
       await ilpFile.writeAsBytes(bytes);
+
+
+      /// test layer name
+      final testLayerName = ILP.fromBytes(await ilp.toBytes(
+        name: 'test',
+        author: 'gzlock',
+        description: 'hi',
+        links: ['github', 'https://github.com'],
+        infos: infos,
+        coverFilePath: ilpCover.path,
+        version: 2,
+        ignoreLayerName: false,
+      ));
+      expect((await testLayerName.layer(0)).name, 'background');
     });
 
     test('decoder test', () async {
