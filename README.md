@@ -31,13 +31,13 @@ This package is the .ilp file codec.
 |------|-----------------|------------------|-------------------------------|------|--------------------------------------------------------------------------------------------------|
 | A    | 0 ~ 3           | 4                | [0x49, 0x4c, 0x50, 0x21]      |      | Fixed file strings. <br/>convert to utf8 is: ILP!                                                |
 | B    | 4 ~ 7           | 4                | int32 value                   |      | Protobuf ILPHeader bytes length                                                                  |
-| C    | 8 ~ 8+C         | Part B int value | Protobuf ILPHeader bytes      | ✔    | Check out [protobuf](https://github.com/whimsy-ai/ilp_file_codec/blob/master/protobuf/ilp.proto) |
-| D    | 8+C+1 ~ dynamic | dynamic          | Protobuf ILPInfo(List) bytes  | ✔    | Check out [protobuf](https://github.com/whimsy-ai/ilp_file_codec/blob/master/protobuf/ilp.proto) |
-| E    | dynamic ~ end   | dynamic          | Protobuf ILPLayer(List) bytes | ✔    | Check out [protobuf](https://github.com/whimsy-ai/ilp_file_codec/blob/master/protobuf/ilp.proto) |
+| C    | 8 ~ 8+C         | Part B int value | Protobuf ILPHeader bytes      | ✔    | Check out [protobuf](https://github.com/whimsy-ai/ilp_file_codec/blob/main/protobuf/ilp.proto) |
+| D    | 8+C+1 ~ dynamic | dynamic          | Protobuf ILPInfo(List) bytes  | ✔    | Check out [protobuf](https://github.com/whimsy-ai/ilp_file_codec/blob/main/protobuf/ilp.proto)   |
+| E    | dynamic ~ end   | dynamic          | Protobuf ILPLayer(List) bytes | ✔    | Check out [protobuf](https://github.com/whimsy-ai/ilp_file_codec/blob/main/protobuf/ilp.proto) |
 
 ## Usage
 
-Check out the [test/ilp_codec_test.dart](https://github.com/whimsy-ai/ilp_file_codec/test/ilp_codec_test.dart) file.
+Check out the [test/ilp_codec_test.dart](https://github.com/whimsy-ai/ilp_file_codec/blob/main/test/ilp_codec_test.dart) file.
 
 ## Exception Codes
 
